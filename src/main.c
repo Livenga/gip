@@ -22,6 +22,14 @@ main(int argc, char *argv[]) {
   int i, opt, f_log;
   char *p_addr, *p_domain;
 
+  if(argc == 1) {
+    fprintf(stderr, "Operand Error.\n");
+    fprintf(stderr, "使用方法: %s [OPTION] DOMAIN\n", argv[0]);
+    fprintf(stderr, "[Option]\n");
+    fprintf(stderr, "\t-l, --log : %s/.git_history に履歴を追加.\n", getenv("HOME"));
+
+    return EOF;
+  }
 
   f_log    = 0;
   while((opt = getopt_long(argc, argv, "l", opts, NULL)) > 0) {
